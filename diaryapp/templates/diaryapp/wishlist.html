@@ -1,0 +1,57 @@
+{% include 'header.html' %}
+
+<div id="detail_diary" class="section diary detail_diary">
+    <h2 class="screen_out">여행지 찜 목록</h2>
+
+    <div class="write-container">
+        <h1 style="color: #636363; font-weight: bold;">찜한 여행지</h1>
+
+        <hr/>
+
+        {% for item in page_obj %}
+        <div class="wishlist-item">
+            <h3 style="display: block; margin-top: 30px;">
+                <strong>장소:</strong> {{ item.province }} {{ item.city }} ({{ item.place }})
+            </h3>
+
+            <p><strong>여행 일정:</strong></p>
+            <ul>
+            {% for date in item.travel_dates %}
+                <li>{{ date }}</li>
+            {% endfor %}
+            </ul>
+
+            <p>추가된 날짜: {{ item.added_at|date:"Y년 n월 j일 H:i" }}</p>
+
+            <a href="{% url 'remove_wish' plan_id=item.plan_id %}" class="btn-sdiary-action">삭제</a>
+        </div>
+        <hr>
+        {% empty %}
+        <p>찜 목록이 비어 있습니다.</p>
+        {% endfor %}
+
+
+
+
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1{% if form.year.value %}&year={{ form.year.value }}{% endif %}{% if form.month.value %}&month={{ form.month.value }}{% endif %}">« 처음</a>
+                    <a href="?page={{ page_obj.previous_page_number }}{% if form.year.value %}&year={{ form.year.value }}{% endif %}{% if form.month.value %}&month={{ form.month.value }}{% endif %}">이전</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}{% if form.year.value %}&year={{ form.year.value }}{% endif %}{% if form.month.value %}&month={{ form.month.value }}{% endif %}">다음</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}{% if form.year.value %}&year={{ form.year.value }}{% endif %}{% if form.month.value %}&month={{ form.month.value }}{% endif %}">끝 »</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

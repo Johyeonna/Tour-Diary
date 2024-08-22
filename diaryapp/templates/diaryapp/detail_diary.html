@@ -1,137 +1,342 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ diary.diarytitle }}</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-        /* Additional CSS styles for modal */
-        .modal-content {
-            padding: 20px;
-        }
-    </style>
+{% include 'header.html' %}
+<section id="detail_diary" class="diary detail_diary">
+    <h2 class="screen_out">여행 다이어리 화면</h2>
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'admin/css/nav_sidebar.css' %}">
-</head>
-<body>
-    <script src="{% static 'admin/js/nav_sidebar.js' %}"></script>
-    <h1>{{ diary.diarytitle }}</h1>
-    <p><strong>Place:</strong> <a href="#" class="open-modal" data-unique-diary-id="{{ diary.unique_diary_id }}">{{ diary.place }}</a></p>
-    <p><strong>Withfriend:</strong> {{ diary.withfriend }}</p>
-    <!-- 태그된 사용자를 보여주는 게 필요함 -->
-    <p><strong>Content:</strong> {{ diary.content }}</p>
-    {% load humanize %}
-    <p><strong>Created at:</strong> {{ diary.created_at|date:"Y년 n월 j일" }}</p>
-
-    {% if diary.representative_image %}
-        <img src="data:image/png;base64,{{ diary.representative_image.image_file }}" alt="Representative Image" width="150">
-    {% endif %}
-
-    {% for image in diary.images.all %}
-        {% if not image.is_representative %}
-            <img src="data:image/png;base64,{{ image.image_file }}" alt="Diary Image" width="150">
-        {% endif %}
-    {% empty %}
-    {% endfor %}
-
-    <button>
-        <a href="{% url 'list_diary' %}">리스트로 돌아가기</a>
-    </button>
-    <p>diary:{{diary.user_email}}</p>
-    <p>settings:{{settings.DEFAULT_FROM_EMAIL}}</p>
-
-    <!-- 수정 버튼 -->
-<!--    <div>-->
-<!--        <p>{{ user.username }}</p>-->
-<!--    </div>-->
-
-
-
-        <button>
-            <a href="{% url 'update_diary' unique_diary_id=diary.unique_diary_id %}">일기수정하기</a>
-        </button>
-
-<!-- 삭제 버튼 -->
-
-        <form action="{% url 'delete_diary' unique_diary_id=diary.unique_diary_id %}" method="post">
-            {% csrf_token %}
-            <input type="submit" value="삭제하기">
-        </form>
-
-
-
-    <h2>댓글</h2>
-    <form method="post" action="{% url 'create_comment' diary.unique_diary_id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">댓글 작성</button>
-    </form>
-    {% for comment in comments %}
-        <div>
-            <p><strong>{{ comment.user_email }}:</strong> {{ comment.comment }}</p>
-            <p>{{comment.user_email}}</p>
-                <button>
-                <a href="{% url 'delete_comment' diary.unique_diary_id comment.comment_id %}">댓글 삭제</a>
-                </button>
+    <div class="write-container">
+        <h1 style="color: #636363; font-weight: bold;">{{ diary.diarytitle }}</h1>
+        <div class="badge_tour">
+            <a {% if is_own_page %}href="{% url 'list_badge' %}"{% endif %} class="link_badge">
+                <span class="scope_badge">
+                    <em class="screen_out">{{ badge_name }} 뱃지</em>
+                    <img src="data:image/png;base64,{{ badge_image }}" class="img_badge" alt="{{ badge_name }}">
+                </span>
+                <em class="screen_out">별명</em>
+                <strong class="tit_badge">{{ nickname }}</strong>
+            </a>
+            &nbsp;&nbsp;&nbsp;{{ diary.created_at|date:"Y년 n월 j일" }}
         </div>
+        <hr/>
+        <p><strong>장소:</strong> <a href="javascript:void(0);" class="open-modal" data-unique-diary-id="{{ diary.unique_diary_id }}">{{ diary.place }}</a></p>
+        <p><strong>함께 한 친구:</strong> {{ diary.withfriend }}</p>
+        <p>{{ diary.content }}</p>
+        {% load humanize %}
 
-    {% empty %}
-        <p>댓글이 없습니다.</p>
-    {% endfor %}
+        {% if diary.representative_image %}
+            <img src="data:image/png;base64,{{ diary.representative_image.image_file }}" width="300" alt="Representative Image">
+        {% else %}
+            <span class="txt_noimg">No image</span>
+        {% endif %}
 
+        {% for image in diary.images.all %}
+            {% if not image.is_representative %}
+                <img src="data:image/png;base64,{{ image.image_file }}" alt="Diary Image" width="300">
+            {% endif %}
+        {% empty %}
+        {% endfor %}
 
+        <div class="diary-actions">
+            <!-- 수정 버튼 -->
+            <button class="btn-diary-action">
+                <a href="{% url 'update_diary' unique_diary_id=diary.unique_diary_id %}">일기수정하기</a>
+            </button>
 
-    <!-- 모달 창 -->
-    <div class="modal fade" id="planModal" tabindex="-1" role="dialog" aria-labelledby="planModalLabel" aria-hidden="true">
+            <!-- 삭제 버튼 -->
+            <form action="{% url 'delete_diary' unique_diary_id=diary.unique_diary_id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="삭제하기" class="btn-diary-action">
+            </form>
+
+            <!-- 리스트로 돌아가는 버튼 -->
+            <button class="btn-diary-action">
+                <a href="{% url 'list_diary' %}">리스트로 돌아가기</a>
+            </button>
+        </div>
+        <br/><br/>
+
+        <!-- 댓글 버튼 -->
+        <div class="diary-comment-actions">
+            <form method="post" action="{% url 'create_comment' diary.unique_diary_id %}">
+                <h3>댓글</h3>
+                {% csrf_token %}
+                {{ form.comment }}
+                <button type="submit" class="btn-diary-action">댓글 작성</button>
+            </form>
+        </div>
+        <br/>
+        <!-- 댓글 내용 및 삭제 버튼 -->
+        <div class="diary-comment-actions">
+            <ul>
+                {% for comment in comment_list %}
+                    <div class="badge_tour">
+                        {% if comment.badge_name and comment.badge_image %}
+                            <span class="scope_badge">
+                                <a href="{% url 'other_diary' comment.user_email %}">
+                                    <img src="data:image/png;base64,{{ comment.badge_image }}" alt="{{ comment.badge_name }} 뱃지" class="img_badge">
+                                    {{ comment.badge_name }} 뱃지
+                                </a>
+                            </span>
+                        {% endif %}
+                        <a href="{% url 'other_diary' comment.user_email %}">
+                            <strong>{{ comment.nickname }}</strong>
+                        </a>
+                        {{ comment.created_at|date:"Y년 n월 j일" }}
+                    </div>
+                    <p>{{ comment.comment }}</p>
+                    {% if request.user.email == comment.user_email %}
+                        <a href="{% url 'delete_comment' diary.unique_diary_id comment.comment_id %}">댓글 삭제</a>
+                    {% endif %}
+                    <hr>
+                {% empty %}
+                    <p>댓글이 없습니다.</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- 모달 창 : 장소 정보 -->
+    <div id="planModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="planModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="planModalLabel">여행 일정 상세 정보</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="planModalLabel">여행 장소 정보</h5>
                 </div>
                 <div class="modal-body">
-                    <div id="modal-body-content">
-                        <!-- 모달 내용이 들어갈 자리 -->
-                    </div>
+                    <div id="planContent"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary" id="wishlistBtn">찜하기</button>
+<!--                    <a href="#" id="travelPlanBtn" class="btn btn-third">여행 계획으로 이동</a>-->
                 </div>
             </div>
         </div>
     </div>
 
+    {% if show_modal %}
+    <!-- 모달 창 : 뱃지, 별명 획득 -->
+    <div class="modal_badge modal fade" id="badgeModal" tabindex="-1" role="dialog" aria-labelledby="badgeModalLabel" aria-hidden="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <h2 class="screen_out">다이어리 뱃지, 별명 획득 모달창</h2>
+                <div class="modal-body">
+                    <div class="badge_tour">
+                        <span class="scope_badge">
+                            <em class="screen_out">{{ badge_name }} 뱃지</em>
+                            <img src="data:image/png;base64,{{ badge_image }}" class="img_badge"  alt="{{ badge_name }}">
+                        </span>
+                        <em class="screen_out">별명</em>
+                        <strong class="tit_badge">{{ nickname }}</strong>
+                    </div>
+                    <p class="txt_info">축하합니다! 뱃지와 별명을 획득했습니다.</p>
+                </div>
+            </div>
+        </div>
+        <canvas id="badgeCanvas"></canvas>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">닫기</button>
+    </div>
+    <style>
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .modal-backdrop{z-index:100 !important}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var badgeModal = new bootstrap.Modal(document.getElementById('badgeModal'), {
+                keyboard: false,
+                backdrop: true,
+                show: true // 모달을 자동으로 표시
+            });
+            badgeModal.show();
+
+            var count = 1000;
+            var defaults = {
+              origin: { y: 0.7 }
+            };
+
+            var confettiInterval;
+            var timeouts = [];
+
+            function fire(particleRatio, opts) {
+              confetti({
+                ...defaults,
+                ...opts,
+                particleCount: Math.floor(count * particleRatio)
+              });
+            }
+
+           // Confetti 효과
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45 });
+
+            // 추가 애니메이션 효과
+            fire(0.2, { spread: 80, startVelocity: 70, decay: 0.9, scalar: 1.1 });
+            fire(0.15, { spread: 150, startVelocity: 30, decay: 0.85, scalar: 1.3 });
+            fire(0.15, { spread: 140, startVelocity: 60, decay: 0.88, scalar: 0.9 });
+            fire(0.05, { spread: 200, startVelocity: 50, decay: 0.95, scalar: 1.5 });
+            fire(0.1, { spread: 160, startVelocity: 75, decay: 0.93, scalar: 1.4 });
 
 
+            function stopConfetti() {
+                clearInterval(confettiInterval);
+                confetti.reset();
+            }
+
+            document.getElementById('badgeModal').addEventListener('hidden.bs.modal', () => {
+                stopConfetti();
+            });
+        });
+    </script>
+    {% endif %}
     <script>
     $(document).ready(function() {
-        // .open-modal 클래스를 가진 요소가 동적으로 생성될 수 있기 때문에 on() 메서드를 사용하여 이벤트를 바인딩합니다.
-        $(document).on('click', '.open-modal', function(e) {
-            e.preventDefault();
+        $('.open-modal').click(function() {
+            console.log("Modal open button clicked");
             var uniqueDiaryId = $(this).data('unique-diary-id');
+            $.ajax({
+                url: '/diary/plan_modal/' + uniqueDiaryId + '/',
+                type: 'GET',
+                success: function(data) {
+                    console.log("AJAX request successful. Data:", data);
+                    var content = '';
+                    if (data.plan_type === 'Jplan') {
+                        content += '<h6>제목: ' + data.plan_title + '</h6>';
+                        content += '<p>지역: ' + data.province + ' ' + data.city + '</p>';
+                        content += '<h6>일정:</h6>';
+                        for (var day in data.days) {
+                            content += '<p>' + day + ': ' + data.days[day].join(', ') + '</p>';
+                        }
+                    } else if (data.plan_type === 'Pplan') {
+                        content += '<h6>제목: ' + data.plan_title + '</h6>';
+                        content += '<p>도시: ' + data.city + '</p>';
+                        content += '<h6>일정:</h6>';
+                        data.days.forEach(function(day) {
+                            content += '<p>' + day.date + ':</p>';
+                            content += '<ul>';
+                            day.titles.forEach(function(title) {
+                                content += '<li>' + title + '</li>';
+                            });
+                            content += '</ul>';
+                        });
+                    } else {
+                        content = '<p>여행 계획 정보가 없습니다.</p>';
+                    }
+                    $('#planContent').html(content);
 
-            // uniqueDiaryId가 정의되어 있지 않은 경우 처리
-            if (typeof uniqueDiaryId !== 'undefined' && uniqueDiaryId !== '') {
-                var url = '/diaryapp/plan_modal/' + uniqueDiaryId + '/';
+                    // 여기에 데이터 속성 추가
+                    $('#planContent').data('plan-type', data.plan_type);
+                    $('#planContent').data('plan-id', data.plan_id);
 
-                // AJAX를 통해 일기의 세부 정보를 가져와서 모달에 채워 넣기
-                $.get(url, function(data) {
-                    $('#modal-body-content').html(data);
                     $('#planModal').modal('show');
-                });
-            } else {
-                console.error('uniqueDiaryId is undefined or empty.');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching plan data:', error);
+                }
+            });
+        });
+
+        $(document).on('click', '#wishlistBtn', function() {
+            console.log("Wishlist button clicked");
+            var planType = $('#planContent').data('plan-type');
+            var planId = $('#planContent').data('plan-id');
+            var city, province, place;
+
+            if (planType === 'Pplan') {
+                city = $('#planContent').find('p:first').text().replace('도시: ', '');
+                province = '';
+                place = city;
+            } else if (planType === 'Jplan') {
+                var locationText = $('#planContent').find('p:first').text().replace('지역: ', '');
+                var locationParts = locationText.split(' ');
+                province = locationParts[0];
+                city = locationParts[1];
+                place = city;
             }
+
+            var travelDates = [];
+            $('#planContent').find('p:not(:first)').each(function() {
+                var dateText = $(this).text().split(':')[0].trim();
+                if (dateText) {
+                    travelDates.push(dateText);
+                }
+            });
+
+            console.log("Sending data to server:", {
+                'plan_id': planId,
+                'place': place,
+                'province': province,
+                'city': city,
+                'travel_dates': JSON.stringify(travelDates),
+                'plan_type': planType
+            });
+
+            $.ajax({
+                url: "{% url 'add_wish' %}",
+                type: 'POST',
+                data: {
+                    'plan_id': planId,
+                    'place': place,
+                    'province': province,
+                    'city': city,
+                    'travel_dates': JSON.stringify(travelDates),
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(data) {
+                    console.log("Server response:", data);
+                    if (data.status === 'success') {
+                        if (data.created) {
+                            alert('찜 목록에 추가되었습니다!');
+                        } else {
+                            alert('이미 찜 목록에 있습니다.');
+                        }
+                    } else {
+                        alert('처리 중 오류가 발생했습니다: ' + data.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error adding to wishlist:', error);
+                    console.error('Server response:', xhr.responseText);
+                    alert('처리 중 오류가 발생했습니다. 자세한 내용은 콘솔을 확인해주세요.');
+                }
+            });
+        });
+
+        // 여행 계획으로 이동 버튼 클릭 이벤트
+        $('#travelPlanBtn').on('click', function(e) {
+            e.preventDefault();
+            window.location.href = "{% url 'list_diary' %}";
+        });
+
+        // 모달 닫기
+        $(document).on('click', '[data-dismiss="modal"], [data-bs-dismiss="modal"]', function() {
+            $(this).closest('.modal').modal('hide');
+        });
+
+        // 모달이 닫혔을 때 내용 비우기
+        $('#planModal').on('hidden.bs.modal', function() {
+            $(this).find('.modal-body').empty();
+        });
+
+        // 모달 높이 조정
+        $('#planModal').on('shown.bs.modal', function() {
+            var modalBody = $(this).find('.modal-body');
+            var bodyHeight = $(window).height() * 0.5;
+            modalBody.css({
+                'max-height': bodyHeight + 'px',
+                'overflow-y': 'auto'
+            });
         });
     });
     </script>
-</body>
-</html>
+
+</section>
+{% include 'footer.html' %}

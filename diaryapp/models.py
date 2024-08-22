@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.utils import timezone
 from djongo import models
 import base64
+
 from taggit.managers import TaggableManager
 from taggit.models import TagBase, TaggedItemBase, TaggedItem
 from django.utils.translation import gettext_lazy as _
@@ -34,12 +35,15 @@ class ImageModel(models.Model):
         image_data = base64.b64decode(self.image_file)
         image = Image.open(BytesIO(image_data))
         return image
-from django.db import models
 
-# Create your models here.
 '''다이어리-일정 모델'''
 class DiaryPlanModel(models.Model):
     unique_diary_id = models.OneToOneField('AiwriteModel', on_delete=models.SET_NULL, blank=True, null=True)
+    destination = models.CharField(max_length=255, blank=True, null=True)  # 여행지 정보 저장
+
+    def __str__(self):
+        return f"Plan for Diary ID {self.unique_diary_id}"
+
 '''다이어리 모델'''
 class AiwriteModel(models.Model):
     EMOTION_CHOICES = [
@@ -54,20 +58,18 @@ class AiwriteModel(models.Model):
         ('Annoyance', '짜증'),
     ]
     unique_diary_id = models.CharField(max_length=255, unique=True)  # 실제 사용하는 아이디
-    user_email = models.EmailField()    # user가 생기면 writer 변경
-    # writer = models.ManyToManyField(UserModel, related_name='user_models', on_delete=models.SET_NULL, blank=True, null=True)
-    diarytitle = models.CharField(max_length=100, default='역사여행')
+    user_email = models.EmailField()    # user모델 생기면 아래걸로 변경
+    # user = models.ManyToManyField(UserModel, related_name='diaries')
+    diarytitle = models.CharField(max_length=100, default='제목을 작성해주세요.')
     emotion = models.CharField(max_length=100, choices=EMOTION_CHOICES)
     content = models.TextField(blank=True, null=True)
-    place = models.CharField(max_length=100, default='남한산성')
+    place = models.CharField(max_length=200, blank=True, null=True)
+    plan_id = models.CharField(max_length=100, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     withfriend = models.CharField(max_length=100, blank=True, null=True)
-    # tags = TaggableManager(
-    #     blank=True,
-    # )
-    # friends = models.ManyToManyField(User, related_name="tagged_friends")
     images = models.ManyToManyField(ImageModel, related_name='aiwrite_models')
     representative_image = models.OneToOneField('ImageModel', on_delete=models.SET_NULL, blank=True, null=True)
+    nickname_id = models.CharField(max_length=100, null=True, blank=True)
     def save(self, *args, **kwargs):
         if not self.created_at:
             self.created_at = timezone.now()
@@ -76,45 +78,127 @@ class AiwriteModel(models.Model):
         super().save(*args, **kwargs)
     def __str__(self):
         return f"{self.unique_diary_id}"
-    # def get_tagged_user(self):
-    #     tagged_users = []
-    #     tagged_items = TaggedItem.objects.filter(content_object=self)
-    #
-    #     for tagged_item in tagged_items:
-    #         if tagged_item.tag.name.startswith('@'):
-    #             username = tagged_item.tag.name[1:]  # @ 제거
-    #             try:
-    #                 user = User.objects.get(username=username)
-    #                 tagged_users.append(user)
-    #             except User.DoesNotExist:
-    #                 # 해당 사용자가 존재하지 않는 경우
-    #                 pass
-    #
-    #     return tagged_users
-    # def get_comments(self):
-    #     return self.comments.all()
+
+
 '''댓글 모델'''
 class CommentModel(models.Model):
     comment_id = models.CharField(max_length=255, unique=True)      # 실제 사용하는 아이디
     user_email = models.EmailField()
-    # author = models.ManyToManyField(UserModel, related_name='user_models')
+    # user = models.ManyToManyField(UserModel, related_name='comments')
     diary_id = models.ManyToManyField('AiwriteModel', related_name='diary_comments')
-    comment = models.TextField(blank=True, null=True, default='댓글이욤')
+    comment = models.TextField(blank=True, null=True, default='댓글을 작성해주세요.')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-created_at']
+
+    def save(self, *args, **kwargs):
+        if not self.created_at:
+            self.created_at = timezone.now()
+        if not self.comment_id:
+            # user가 ManyToMany 필드이므로, 첫 번째 사용자의 이메일을 사용
+            user_email = self.user.first().email if self.user.exists() else 'unknown'
+            self.comment_id = f"{self.created_at.strftime('%Y%m%d%H%M%S')}{user_email}"
+        super().save(*args, **kwargs)
+    class Meta:
+        ordering = ['-created_at']
+
     def save(self, *args, **kwargs):
         if not self.created_at:
             self.created_at = timezone.now()
         if not self.comment_id:
             self.comment_id = f"{self.created_at.strftime('%Y%m%d%H%M%S')}{self.user_email}"
         super().save(*args, **kwargs)
-    # def __str__(self):
-    #     return f'{self.user.username}의 댓글 - {self.diary_id.unique_diary_id}'
+
     def __str__(self):
-        return f'{self.user_email}의 댓글 - {self.diary_id.unique_diary_id}'
+        return f'{self.user_email}의 댓글 - {self.diary_id.first().unique_diary_id if self.diary_id.exists() else "Unknown"}'
+
+    def can_delete(self, user_email):
+        return user_email == self.user_email
+    # user모델 연결 후 변경
+    # def __str__(self):
+    #     return f'댓글 - {self.diary_id.first().unique_diary_id}'
+    #
     # def can_delete(self, user):
-    #     return user == self.user
-    def can_delete(self, user):
-        return user == self.user_email
+    #     return user in self.users.all()
+
+
+'''찜모델'''
+class Wishlist(models.Model):
+    user_email = models.EmailField()
+    plan_id = models.CharField(max_length=100, default='', blank=True)
+    place = models.CharField(max_length=255)
+    province = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    travel_dates = models.JSONField()
+    added_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        # unique_together = ('user_email', 'plan_id')
+        pass
+    def __str__(self):
+        return f"{self.place} - {self.user_email}"
+    # user모델 연결 후 변경
+    # class Meta:
+    #     unique_together = ('users', 'place')
+    #
+    # def __str__(self):
+    #     return f"{self.place}"
+
+
+
+# 플래그 모델(commands 중복 방지)
+class CommandFlag(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    executed = models.BooleanField(default=False)
+
+
+# 삭제 예정 (24.07.25 윤보라)
+# nickname = models.OneToOneField('Nickname', on_delete=models.SET_NULL, null=True, blank=True, related_name='nickname_model')
+# 카테고리1 모델
+# class CategoryCode1(models.Model):
+#     code = models.CharField(max_length=50, unique=True)
+#     name = models.CharField(max_length=255)
+#     rnum = models.IntegerField()
+#
+#     def __str__(self):
+#         return self.code
+#
+#     class Meta:
+#         db_table = 'categoryCode1'
+# 카테고리3 모델
+# class CategoryCode3(models.Model):
+#     code = models.CharField(max_length=50, unique=True)
+#     name = models.CharField(max_length=255)
+#     rnum = models.IntegerField()
+#     cat1_code = models.CharField(max_length=50)
+#     cat2_code = models.CharField(max_length=50)
+#
+#     def __str__(self):
+#         return self.code
+#
+#     class Meta:
+#         db_table = 'categoryCode3'
+# # 뱃지 모델
+# class Badge(models.Model):
+#     badge_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, primary_key=True)
+#     name = models.CharField(max_length=255)
+#     badge = models.BinaryField()
+#     categoryCode1 = models.CharField(max_length=50, blank=True, null=True)
+#     categoryCode3 = models.CharField(max_length=50, blank=True, null=True)
+#
+#     class Meta:
+#         db_table = 'diaryapp_badge'
+#
+#     def __str__(self):
+#         return self.name
+# 별명 모델
+# class Nickname(models.Model):
+#     nickname_id = models.UUIDField(default=uuid.uuid4, editable=False)
+#     nickname = models.CharField(max_length=255)
+#     unique_diary_id = models.OneToOneField('AiwriteModel', on_delete=models.SET_NULL, null=True, blank=True, related_name='aiwrite_model')
+#     badge = models.BinaryField()  # 임베딩 필드
+#     title = models.CharField(max_length=255)
+#
+#     class Meta:
+#         db_table = 'nickname'
+

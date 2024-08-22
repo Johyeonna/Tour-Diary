@@ -1,97 +1,11 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="737bdc5c-aaed-4eb9-813f-f8a7079d30cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common_templates/footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_templates/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diaryapp/management/commands/update_badge.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diaryapp/templates/diaryapp/diary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diaryapp/templates/diaryapp/elements.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diaryapp/templates/diaryapp/generic.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diaryapp/templates/diaryapp/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/fontawesome-all.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/images/overlay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/css/noscript.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/breakpoints.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/browser.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/jquery.scrollex.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/jquery.scrolly.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/js/util.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/base/_page.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/base/_reset.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/base/_typography.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_actions.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_box.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_button.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_features.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_form.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_icon.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_icons.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_image.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_list.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_row.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_section.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_spotlight.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_statistics.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/components/_table.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/layout/_footer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/layout/_header.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/layout/_main.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/layout/_nav.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/layout/_wrapper.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/libs/_breakpoints.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/libs/_functions.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/libs/_html-grid.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/libs/_mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/libs/_vars.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/libs/_vendor.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/main.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/sass/noscript.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-brands-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-brands-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-brands-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-brands-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-brands-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-regular-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-regular-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-regular-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-regular-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-regular-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-solid-900.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-solid-900.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-solid-900.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-solid-900.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/webfonts/fa-solid-900.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/pic01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/pic02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/pic03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/pic04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/pic05.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/pic06.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diaryapp/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diaryapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diaryapp/templates/diaryapp/detail_diary_otheruser.html" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/templates/diaryapp/detail_diary_otheruser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diaryapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diaryapp/views/diarywrite_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/views/diarywrite_views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myproject/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/myproject/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
-    <list default="true" id="737bdc5c-aaed-4eb9-813f-f8a7079d30cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/diaryapp/management/commands/update_badge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="60c50d79-1c5f-47d6-ba11-328326ab363b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,149 +14,69 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="main" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "seoraroong"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/seoraroong/Encore_FInal.git",
+    "accountId": "7eb65375-69cf-4168-a7ea-98e5a82bb1bd"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2iAL7KUd1LZbLQIytOIVoj7pw12" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectId" id="2jsTJXBxcHqFbaEyXPMMweOpvx5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.Django.executor&quot;: &quot;Run&quot;,
-    &quot;Python.apps.executor&quot;: &quot;Run&quot;,
-    &quot;Python.forms.executor&quot;: &quot;Run&quot;,
-    &quot;Python.manage.executor&quot;: &quot;Run&quot;,
-    &quot;Python.models.executor&quot;: &quot;Run&quot;,
-    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
-    &quot;Python.storage.executor&quot;: &quot;Run&quot;,
-    &quot;Python.views.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;jjwdiary&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/fx567/PycharmProjects/myproject&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.runserver.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;diary&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/projects/Encore_Final_Project/static/assets/js&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "Python.update_bert_vector_food39.executor": "Run",
+    "Python.update_overall_vectors.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Playdata/PycharmProjects/Encore_FInal",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\projects\Encore_Final_Project\static\assets\js" />
-      <recent name="C:\projects\Encore_Final_Project\static\assets\css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\projects\Encore_Final_Project" />
-      <recent name="C:\projects\Encore_Final_Project\static\templates" />
-      <recent name="C:\projects\Encore_Final_Project\diaryapp\templates" />
-      <recent name="C:\projects\Encore_Final_Project\templates" />
-      <recent name="C:\projects\Encore_Final_Project\diaryapp\static" />
+      <recent name="C:\Users\Playdata\PycharmProjects\Encore_FInal" />
+      <recent name="C:\Users\Playdata\PycharmProjects\Encore_FInal\code\travel_recommend\management\commands" />
+      <recent name="C:\Users\Playdata\PycharmProjects\Encore_FInal\code\travel_recommend\fastapi_app\models" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="runserver" type="PythonConfigurationType" factoryName="Python">
-      <module name="myproject" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (Encore_Final_Project)" />
-      <option name="WORKING_DIRECTORY" value="C:\projects\Encore_Final_Project" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
-      <option name="PARAMETERS" value="runserver" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="RunManager">
-    <configuration name="Django" type="PythonConfigurationType" factoryName="Python">
-      <module name="myproject" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (myproject)" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\fx567\PycharmProjects\myproject" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
-      <option name="PARAMETERS" value="runserver" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5b207ade9991-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17890.14" />
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="737bdc5c-aaed-4eb9-813f-f8a7079d30cf" name="Changes" comment="" />
-      <created>1718928267546</created>
+      <changelist id="60c50d79-1c5f-47d6-ba11-328326ab363b" name="Changes" comment="" />
+      <created>1722174712286</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1718928267546</updated>
+      <updated>1722174712286</updated>
     </task>
     <servers />
   </component>
@@ -257,4 +91,206 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/code" />
+    </ignored-roots>
+  </component>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="737bdc5c-aaed-4eb9-813f-f8a7079d30cf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jpage/templates/Jpage/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/Jpage/templates/Jpage/map.html" afterDir="false" />
+=======
+    <list default="true" id="dcd1f622-9fbd-4330-9ce0-b25d3f40d667" name="Changes" comment="">
+    <list default="true" id="66fb4d72-e793-489e-b109-633a82a13a0a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaryapp/mongo_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/mongo_queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common_templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/common_templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaryapp/templates/diaryapp/diary.html" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/templates/diaryapp/diary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaryapp/templates/diaryapp/list_badge.html" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/templates/diaryapp/list_badge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaryapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diaryapp/views/badge_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/diaryapp/views/badge_views.py" afterDir="false" />
+>>>>>>> 8718befd92fb8d19c10e55ea27e956adb04fd59d
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+<<<<<<< HEAD
+  <component name="ProjectId" id="2iAL7KUd1LZbLQIytOIVoj7pw12" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+=======
+  <component name="ProjectId" id="2jSQGpvZb26cmWZPMIOvROQMhDi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+>>>>>>> 8718befd92fb8d19c10e55ea27e956adb04fd59d
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+<<<<<<< HEAD
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.ContentTypeId.executor": "Run",
+    "Python.api.executor": "Run",
+    "Python.apps.executor": "Run",
+    "Python.areaBaseList.executor": "Run",
+    "Python.areaCode.executor": "Run",
+    "Python.category.executor": "Run",
+    "Python.categoryCode.executor": "Run",
+    "Python.categoryCode2.executor": "Run",
+    "Python.categoryCode3.executor": "Run",
+    "Python.cityDistrict.executor": "Run",
+    "Python.detailCommon.executor": "Run",
+    "Python.detailInfo.executor": "Run",
+    "Python.detailIntro.executor": "Run",
+    "Python.map.executor": "Run",
+    "Python.urls.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Jpage",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Playdata/OneDrive/바탕 화면/gitfile/Encore_Final_Project/static",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Playdata\OneDrive\바탕 화면\gitfile\Encore_Final_Project\static" />
+      <recent name="C:\Users\Playdata\OneDrive\바탕 화면\gitfile\Encore_Final_Project\common_templates" />
+      <recent name="C:\Users\Playdata\OneDrive\바탕 화면\gitfile\Encore_Final_Project\Jpage\templates\Jpage" />
+      <recent name="C:\Users\Playdata\OneDrive\바탕 화면\gitfile\Encore_Final_Project\Jpage\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Playdata\OneDrive\바탕 화면\gitfile\Encore_Final_Project\static\assets\js" />
+      <recent name="C:\Users\Playdata\OneDrive\바탕 화면\gitfile\Encore_Final_Project\static\assets\css" />
+      <recent name="C:\Users\Playdata\OneDrive\바탕 화면\gitfile\Encore_Final_Project\Jpage\resource" />
+      <recent name="C:\Users\Playdata\OneDrive\바탕 화면\gitfile\Encore_Final_Project\Jpage\templates\Jpage" />
+      <recent name="C:\Users\Playdata\OneDrive\바탕 화면\gitfile\Encore_Final_Project\static\assets\css\images" />
+=======
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.django.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "jjwdiary",
+    "last_opened_file_path": "C:/Users/fx567/PycharmProjects/myproject/myproject",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="django" type="PythonConfigurationType" factoryName="Python">
+      <module name="myproject" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (myproject)" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\fx567\PycharmProjects\myproject\myproject" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\Encore_Final_Project\diaryapp\fastapi_app" />
+      <recent name="C:\projects\Encore_Final_Project\diaryapp\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\projects\Encore_Final_Project" />
+      <recent name="C:\projects\Encore_Final_Project\myproject" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/diaryapp/models" />
+      <recent name="C:\projects\Encore_Final_Project\diaryapp\models" />
+>>>>>>> 8718befd92fb8d19c10e55ea27e956adb04fd59d
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="66fb4d72-e793-489e-b109-633a82a13a0a" name="Changes" comment="" />
+      <created>1721377906195</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1718928267546</updated>
+      <workItem from="1721614441593" duration="276000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+=======
+      <updated>1721377906195</updated>
+    </task>
+    <servers />
+  </component>
+>>>>>>> 8718befd92fb8d19c10e55ea27e956adb04fd59d
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+<<<<<<< HEAD
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+>>>>>>> JPage
+=======
+>>>>>>> 8718befd92fb8d19c10e55ea27e956adb04fd59d
 </project>
